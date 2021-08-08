@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Library based on NestJs for auth users in mongo database. Also implementing jwt service.",
   "author": "senior-vova",
-  "private": true,
+  "private": false,
   "license": "UNLICENSED",
   "main": "index.js",
   "keywords": [
