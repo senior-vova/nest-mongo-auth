@@ -1,11 +1,12 @@
 {
   "name": "nest-mongo-auth",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Library based on NestJS for auth users in mongo database. Also implementing jwt service.",
   "author": "senior-vova",
   "private": false,
   "license": "MIT",
   "main": "index.js",
+  "homepage": "https://senior-vova.github.io/nest-mongo-auth",
   "keywords": [
     "nest",
     "mongo",
