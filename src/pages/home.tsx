@@ -1,10 +1,12 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 const HomePage: React.FC = () => {
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <Container>
+      <h1>Nest-Mongo-Auth library documentation</h1>
+      <h3>Coming soon...</h3>
+    </Container>
   );
 };
 
