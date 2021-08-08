@@ -1,5 +1,5 @@
 import { Model } from "mongoose";
-import { NMAJWTOptionsI, NMALoginResponseType, NMAServiceOptionsI } from "src/interfaces";
+import { NMAJWTOptionsI, NMALoginResponseType, NMAServiceOptionsI } from "src/interfaces/public";
 import { JWTService } from "src/jwt-module/jwt.service";
 export declare class NestMongoAuthService {
     private readonly jwtService;

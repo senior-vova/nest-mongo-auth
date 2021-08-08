@@ -11,7 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestMongoAuthService = void 0;
 const common_1 = require("@nestjs/common");
-const interfaces_1 = require("../interfaces");
+const public_1 = require("../interfaces/public");
+const core_1 = require("../interfaces/core");
 const jwt_service_1 = require("../jwt-module/jwt.service");
 let NestMongoAuthService = class NestMongoAuthService {
     constructor(jwtService) {
@@ -26,12 +27,17 @@ let NestMongoAuthService = class NestMongoAuthService {
     }
     async login(validate_data) {
         if (!this.isInit)
-            throw interfaces_1.NotInitError;
+            throw core_1.NotInitError;
         try {
             const user = await this.userModel.findOne(validate_data, this.options.getUserProjection, this.options.getUserOptions);
-            const dataToJWT = this.generateDataForJWT(user);
-            const jwt = await this.jwtService.GenerateToken(dataToJWT);
-            return Promise.resolve({ user, jwt });
+            if (user) {
+                const dataToJWT = this.generateDataForJWT(user);
+                const jwt = await this.jwtService.GenerateToken(dataToJWT);
+                return Promise.resolve({ user, jwt });
+            }
+            else {
+                return Promise.reject({ error: "User is not found" });
+            }
         }
         catch (error) {
             return Promise.reject({ error });
@@ -39,12 +45,17 @@ let NestMongoAuthService = class NestMongoAuthService {
     }
     async auth(userID) {
         if (!this.isInit)
-            throw interfaces_1.NotInitError;
+            throw core_1.NotInitError;
         try {
             const user = await this.userModel.findById(userID, this.options.getUserProjection, this.options.getUserOptions);
-            const dataToJWT = this.generateDataForJWT(user);
-            const jwt = await this.jwtService.GenerateToken(dataToJWT);
-            return Promise.resolve({ user, jwt });
+            if (user) {
+                const dataToJWT = this.generateDataForJWT(user);
+                const jwt = await this.jwtService.GenerateToken(dataToJWT);
+                return Promise.resolve({ user, jwt });
+            }
+            else {
+                return Promise.reject({ error: "User is not found" });
+            }
         }
         catch (error) {
             return Promise.reject({ error });
@@ -54,11 +65,6 @@ let NestMongoAuthService = class NestMongoAuthService {
         const data = {
             _id: user._id,
         };
-        for (const [key, value] of Object.entries(user)) {
-            if (this.options.toTokenUserFields.includes(key)) {
-                data[key] = value;
-            }
-        }
         return data;
     }
 };

@@ -6,9 +6,7 @@ interface LoginSuccessI {
 interface LoginFailedI {
     error: any;
 }
-export declare const NotInitError: Error;
 export interface NMAServiceOptionsI {
-    toTokenUserFields: Array<string>;
     getUserProjection: Object;
     getUserOptions: Object;
 }
