@@ -19,12 +19,12 @@ const constants_1 = require("../constants");
 let NestMongoAuthService = class NestMongoAuthService {
     constructor(options, jwtService) {
         this.jwtService = jwtService;
-        this.userModel = options.userModel;
-        this.serviceOptions = options.serviceOptions;
+        this.getUserOptions = options.getUserOptions;
+        this.getUserProjection = options.getUserProjection;
     }
-    async login(validate_data) {
+    async login(userModel, validate_data) {
         try {
-            const user = await this.userModel.findOne(validate_data, this.serviceOptions.getUserProjection, this.serviceOptions.getUserOptions);
+            const user = await userModel.findOne(validate_data, this.getUserProjection, this.getUserOptions);
             if (user) {
                 const dataToJWT = this.generateDataForJWT(user);
                 const jwt = await this.jwtService.GenerateToken(dataToJWT);
@@ -38,9 +38,9 @@ let NestMongoAuthService = class NestMongoAuthService {
             return Promise.reject({ error });
         }
     }
-    async auth(userID) {
+    async auth(userModel, userID) {
         try {
-            const user = await this.userModel.findById(userID, this.serviceOptions.getUserProjection, this.serviceOptions.getUserOptions);
+            const user = await userModel.findById(userID, this.getUserProjection, this.getUserOptions);
             if (user) {
                 const dataToJWT = this.generateDataForJWT(user);
                 const jwt = await this.jwtService.GenerateToken(dataToJWT);

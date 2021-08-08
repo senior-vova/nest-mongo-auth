@@ -9,19 +9,13 @@ var NestMongoAuthModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestMongoAuthModule = void 0;
 const common_1 = require("@nestjs/common");
-const jwt_module_1 = require("../jwt-module/jwt.module");
 const constants_1 = require("../constants");
 const nest_mongo_auth_service_1 = require("./nest-mongo-auth.service");
 let NestMongoAuthModule = NestMongoAuthModule_1 = class NestMongoAuthModule {
-    static forRoot(options) {
+    static forRoot(JWTModule, options) {
         return {
             module: NestMongoAuthModule_1,
-            imports: [
-                jwt_module_1.JWTModule.forRoot({
-                    secretKey: options.jwtOptions.secretKey,
-                    expiresIn: options.jwtOptions.expiresIn,
-                }),
-            ],
+            imports: [JWTModule],
             providers: [
                 { provide: constants_1.NMA_MODULE_CONFIGS, useValue: options },
                 nest_mongo_auth_service_1.NestMongoAuthService,

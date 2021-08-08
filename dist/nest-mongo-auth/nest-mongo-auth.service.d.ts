@@ -1,11 +1,12 @@
+import { Model } from "mongoose";
 import { NMALoginResponseType, NMAModuleSetupOptions } from "../interfaces";
 import { JWTService } from "src/jwt-module/jwt.service";
 export declare class NestMongoAuthService {
     private readonly jwtService;
-    private userModel;
-    private serviceOptions;
+    private getUserOptions;
+    private getUserProjection;
     constructor(options: NMAModuleSetupOptions, jwtService: JWTService);
-    login(validate_data: Object): Promise<NMALoginResponseType>;
-    auth(userID: string): Promise<NMALoginResponseType>;
+    login(userModel: Model<any>, validate_data: Object): Promise<NMALoginResponseType>;
+    auth(userModel: Model<any>, userID: string): Promise<NMALoginResponseType>;
     private generateDataForJWT;
 }

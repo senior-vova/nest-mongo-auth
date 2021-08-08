@@ -6,15 +6,10 @@ interface LoginSuccessI {
 interface LoginFailedI {
     error: any;
 }
-export interface NMAServiceOptionsI {
-    getUserProjection: Object;
-    getUserOptions: Object;
-}
 export declare type NMALoginResponseType = LoginSuccessI | LoginFailedI;
 export declare type NMAModuleSetupOptions = {
-    userModel: Model<any>;
-    serviceOptions: NMAServiceOptionsI;
-    jwtOptions: JWTModuleSetupOptions;
+    getUserProjection: Object;
+    getUserOptions: Object;
 };
 export declare type JWTModuleSetupOptions = {
     secretKey: string;
