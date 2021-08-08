@@ -5,6 +5,15 @@
   "author": "senior-vova",
   "private": true,
   "license": "UNLICENSED",
+  "main": "index.js",
+  "keywords": [
+    "nest",
+    "mongo",
+    "jwt",
+    "auth",
+    "login",
+    "ts"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build"
