@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  <a href="https://senior-vova.github.io/nest-mongo-auth" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
 ## Description
@@ -14,13 +14,13 @@ $ npm install nest-mongo-auth
 
 ## Documentation
 
- [Read docs here](https://senior-vova.github.com/nest-mongo-auth).
+[Read docs here](https://senior-vova.github.io/nest-mongo-auth).
 
 ## Stay in touch
 
 - Author - [Senior Vova](https://github.com/senior-vova)
-- Website - [https://nest-mongo-auth.com](https://senior-vova.github.com/nest-mongo-auth)
+- Website - [https://nest-mongo-auth.com](https://senior-vova.github.io/nest-mongo-auth)
 
 ## License
-  
- Nest-Mongo-Auth is [MIT licensed](LICENSE).
+
+Nest-Mongo-Auth is [MIT licensed](LICENSE).
