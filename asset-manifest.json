@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/nest-mongo-auth/static/css/main.c991833f.chunk.css",
+    "main.js": "/nest-mongo-auth/static/js/main.bbc802e7.chunk.js",
+    "main.js.map": "/nest-mongo-auth/static/js/main.bbc802e7.chunk.js.map",
+    "runtime-main.js": "/nest-mongo-auth/static/js/runtime-main.77adbc00.js",
+    "runtime-main.js.map": "/nest-mongo-auth/static/js/runtime-main.77adbc00.js.map",
+    "static/css/2.818011ed.chunk.css": "/nest-mongo-auth/static/css/2.818011ed.chunk.css",
+    "static/js/2.5112146b.chunk.js": "/nest-mongo-auth/static/js/2.5112146b.chunk.js",
+    "static/js/2.5112146b.chunk.js.map": "/nest-mongo-auth/static/js/2.5112146b.chunk.js.map",
+    "index.html": "/nest-mongo-auth/index.html",
+    "static/css/2.818011ed.chunk.css.map": "/nest-mongo-auth/static/css/2.818011ed.chunk.css.map",
+    "static/css/main.c991833f.chunk.css.map": "/nest-mongo-auth/static/css/main.c991833f.chunk.css.map",
+    "static/js/2.5112146b.chunk.js.LICENSE.txt": "/nest-mongo-auth/static/js/2.5112146b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.77adbc00.js",
+    "static/css/2.818011ed.chunk.css",
+    "static/js/2.5112146b.chunk.js",
+    "static/css/main.c991833f.chunk.css",
+    "static/js/main.bbc802e7.chunk.js"
+  ]
+}
