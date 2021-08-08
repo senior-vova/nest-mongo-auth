@@ -10,9 +10,14 @@ export interface NMAServiceOptionsI {
     getUserProjection: Object;
     getUserOptions: Object;
 }
-export interface NMAJWTOptionsI {
+export declare type NMALoginResponseType = LoginSuccessI | LoginFailedI;
+export declare type NMAModuleSetupOptions = {
+    userModel: Model<any>;
+    serviceOptions: NMAServiceOptionsI;
+    jwtOptions: JWTModuleSetupOptions;
+};
+export declare type JWTModuleSetupOptions = {
     secretKey: string;
     expiresIn: string;
-}
-export declare type NMALoginResponseType = LoginSuccessI | LoginFailedI;
+};
 export {};

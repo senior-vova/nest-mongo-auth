@@ -8,28 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestMongoAuthService = void 0;
 const common_1 = require("@nestjs/common");
-const public_1 = require("../interfaces/public");
-const core_1 = require("../interfaces/core");
 const jwt_service_1 = require("../jwt-module/jwt.service");
+const constants_1 = require("../constants");
 let NestMongoAuthService = class NestMongoAuthService {
-    constructor(jwtService) {
+    constructor(options, jwtService) {
         this.jwtService = jwtService;
-        this.isInit = false;
-    }
-    init(userModel, options, jwtOptions) {
-        this.userModel = userModel;
-        this.options = options;
-        this.jwtService.init(jwtOptions.secretKey, jwtOptions.expiresIn);
-        this.isInit = true;
+        this.userModel = options.userModel;
+        this.serviceOptions = options.serviceOptions;
     }
     async login(validate_data) {
-        if (!this.isInit)
-            throw core_1.NotInitError;
         try {
-            const user = await this.userModel.findOne(validate_data, this.options.getUserProjection, this.options.getUserOptions);
+            const user = await this.userModel.findOne(validate_data, this.serviceOptions.getUserProjection, this.serviceOptions.getUserOptions);
             if (user) {
                 const dataToJWT = this.generateDataForJWT(user);
                 const jwt = await this.jwtService.GenerateToken(dataToJWT);
@@ -44,10 +39,8 @@ let NestMongoAuthService = class NestMongoAuthService {
         }
     }
     async auth(userID) {
-        if (!this.isInit)
-            throw core_1.NotInitError;
         try {
-            const user = await this.userModel.findById(userID, this.options.getUserProjection, this.options.getUserOptions);
+            const user = await this.userModel.findById(userID, this.serviceOptions.getUserProjection, this.serviceOptions.getUserOptions);
             if (user) {
                 const dataToJWT = this.generateDataForJWT(user);
                 const jwt = await this.jwtService.GenerateToken(dataToJWT);
@@ -62,15 +55,14 @@ let NestMongoAuthService = class NestMongoAuthService {
         }
     }
     generateDataForJWT(user) {
-        const data = {
-            _id: user._id,
-        };
+        const data = { _id: user._id };
         return data;
     }
 };
 NestMongoAuthService = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [jwt_service_1.JWTService])
+    __param(0, common_1.Inject(constants_1.NMA_MODULE_CONFIGS)),
+    __metadata("design:paramtypes", [Object, jwt_service_1.JWTService])
 ], NestMongoAuthService);
 exports.NestMongoAuthService = NestMongoAuthService;
 //# sourceMappingURL=nest-mongo-auth.service.js.map
