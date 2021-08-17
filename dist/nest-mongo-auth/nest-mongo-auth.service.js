@@ -14,8 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestMongoAuthService = void 0;
 const common_1 = require("@nestjs/common");
-const jwt_service_1 = require("../jwt-module/jwt.service");
 const constants_1 = require("../constants");
+const nest_jwt_module_1 = require("nest-jwt-module");
 let NestMongoAuthService = class NestMongoAuthService {
     constructor(options, jwtService) {
         this.jwtService = jwtService;
@@ -62,7 +62,7 @@ let NestMongoAuthService = class NestMongoAuthService {
 NestMongoAuthService = __decorate([
     common_1.Injectable(),
     __param(0, common_1.Inject(constants_1.NMA_MODULE_CONFIGS)),
-    __metadata("design:paramtypes", [Object, jwt_service_1.JWTService])
+    __metadata("design:paramtypes", [Object, nest_jwt_module_1.JWTService])
 ], NestMongoAuthService);
 exports.NestMongoAuthService = NestMongoAuthService;
 //# sourceMappingURL=nest-mongo-auth.service.js.map

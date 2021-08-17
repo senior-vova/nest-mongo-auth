@@ -11,8 +11,4 @@ export declare type NMAModuleSetupOptions = {
     getUserProjection: Object;
     getUserOptions: Object;
 };
-export declare type JWTModuleSetupOptions = {
-    secretKey: string;
-    expiresIn: string;
-};
 export {};
